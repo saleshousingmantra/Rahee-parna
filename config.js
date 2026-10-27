@@ -27,7 +27,7 @@ window.SITE_CONFIG = {
   SUPABASE_TABLE: "enquiries",
 
   /* Default project label saved with every enquiry row */
-  PROJECT_NAME: "Raahee Parna, Dudulgaon, Pune",
+  PROJECT_NAME: "Raahee Parna",
 
   /* Default Relationship Manager assigned to every enquiry.
      Change these two values to reassign — index.js fills every
@@ -36,8 +36,8 @@ window.SITE_CONFIG = {
      in the notification email as reference info. */
   DEFAULT_DEVELOPER_NAME: "Raahee Corp",
 
-  DEFAULT_MANAGER_NAME: "Rishabh Gohara",
-  DEFAULT_MANAGER_EMAIL: "rishabh.housingmantra@gmail.com"
+  DEFAULT_MANAGER_NAME: "Nikhil Kamble",
+  DEFAULT_MANAGER_EMAIL: ""
 
   /* NOTE ON EMAIL ROUTING:
      Who actually receives/CCs the enquiry notification is NOT

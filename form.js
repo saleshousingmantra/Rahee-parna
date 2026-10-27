@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const SUPABASE_ANON_KEY = CONFIG.SUPABASE_ANON_KEY;
     const EMAIL_SERVICE_URL = CONFIG.EMAIL_SERVICE_URL;
     const SUPABASE_TABLE = CONFIG.SUPABASE_TABLE || "enquiries";
-    const DEFAULT_PROJECT_NAME = CONFIG.PROJECT_NAME || "Raahee Parna, Dudulgaon, Pune";
+    const DEFAULT_PROJECT_NAME = CONFIG.PROJECT_NAME || "Raahee Parna";
 
     if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
         console.error("Missing Supabase config. Make sure config.js is loaded before form.js.");

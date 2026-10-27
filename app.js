@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
   var cfg = window.SITE_CONFIG || {};
-  var PHONE = '919271715959', PHONE_DISPLAY = '+91 92717 15959';
+  var PHONE = '917420880067', PHONE_DISPLAY = '+91 74208 80067';
 
   [['developer', cfg.DEFAULT_DEVELOPER_NAME], ['manager_name', cfg.DEFAULT_MANAGER_NAME], ['manager_email', cfg.DEFAULT_MANAGER_EMAIL]]
     .forEach(function (p) {
