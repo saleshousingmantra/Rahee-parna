@@ -180,8 +180,10 @@
     form input[readonly] { background: #f3f1ea; color: var(--muted); }
     form .opt, .fine { color: var(--muted); font-weight: 400; }
     .fine { font-size: .75rem; margin: .8em 0 0; }
-    .field-error { color: #b3261e; font-size: .78rem; display: block; margin-top: .25em; }
-    input.error, select.error { border-color: #b3261e !important; }
+    .field-error { color: #b3261e; font-size: .78rem; display: none; margin-top: .25em; }
+    .field-error.active { display: block; }
+    .is-invalid { border-color: #b3261e !important; }
+    .btn:disabled { cursor: not-allowed; }
     .success-message { display: none; text-align: center; padding: 1.5rem 0; }
     .success-message.active { display: block; }
 
@@ -477,10 +479,13 @@
             <input type="hidden" name="project" value="Raahee Parna">
             <label for="f-name">Full name</label>
             <input type="text" id="f-name" name="name" autocomplete="name" placeholder="Your full name" required>
+            <span class="field-error" id="f-name-error" role="alert"></span>
             <label for="f-phone">Mobile number</label>
             <input type="tel" id="f-phone" name="phone" inputmode="numeric" autocomplete="tel" placeholder="10-digit mobile number" maxlength="10" required>
-            <label for="f-email">Email <span class="opt">(optional)</span></label>
-            <input type="email" id="f-email" name="email" autocomplete="email" placeholder="you@example.com">
+            <span class="field-error" id="f-phone-error" role="alert"></span>
+            <label for="f-email">Email</label>
+            <input type="email" id="f-email" name="email" autocomplete="email" placeholder="you@example.com" required>
+            <span class="field-error" id="f-email-error" role="alert"></span>
             <label for="f-interest">Interested in</label>
             <select id="f-interest" name="interest">
               <option value="2 BHK">2 BHK</option>
@@ -488,9 +493,12 @@
               <option value="3 BHK">3 BHK</option>
               <option value="Not sure yet">Not sure yet</option>
             </select>
+            <span class="field-error" id="f-interest-error" role="alert"></span>
             <input type="hidden" name="developer" value="Raahee Corp">
             <input type="hidden" name="manager_name" value="">
             <input type="hidden" name="manager_email" value="">
+            <input type="hidden" name="source" value="">
+            <input type="hidden" name="source_link" value="">
             <button type="submit" class="btn btn-teal btn-block">Enquire Now</button>
             <p class="fine">By submitting, you agree to be contacted about Raahee Parna.</p>
           </form>
@@ -525,10 +533,13 @@
         <input type="hidden" name="project" value="Raahee Parna">
         <label for="modal-name">Full name</label>
         <input type="text" id="modal-name" name="name" autocomplete="name" placeholder="Your full name" required>
+            <span class="field-error" id="modal-name-error" role="alert"></span>
         <label for="modal-phone">Mobile number</label>
         <input type="tel" id="modal-phone" name="phone" inputmode="numeric" autocomplete="tel" placeholder="10-digit mobile number" maxlength="10" required>
-        <label for="modal-email">Email <span class="opt">(optional)</span></label>
-        <input type="email" id="modal-email" name="email" autocomplete="email" placeholder="you@example.com">
+            <span class="field-error" id="modal-phone-error" role="alert"></span>
+        <label for="modal-email">Email</label>
+        <input type="email" id="modal-email" name="email" autocomplete="email" placeholder="you@example.com" required>
+            <span class="field-error" id="modal-email-error" role="alert"></span>
         <label for="modal-interest">Interested in</label>
         <select id="modal-interest" name="interest">
           <option value="2 BHK">2 BHK</option>
@@ -536,9 +547,12 @@
           <option value="3 BHK">3 BHK</option>
           <option value="Not sure yet">Not sure yet</option>
         </select>
+            <span class="field-error" id="modal-interest-error" role="alert"></span>
         <input type="hidden" name="developer" value="Raahee Corp">
         <input type="hidden" name="manager_name" value="">
         <input type="hidden" name="manager_email" value="">
+            <input type="hidden" name="source" value="">
+            <input type="hidden" name="source_link" value="">
         <button type="submit" class="btn btn-teal btn-block" id="modalSubmit">Enquire Now</button>
       </form>
       <div class="success-message" role="status"><h3>Thank you!</h3><p>We have received your details and will contact you shortly.</p></div>

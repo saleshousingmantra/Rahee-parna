@@ -2,9 +2,12 @@ document.addEventListener('DOMContentLoaded', function () {
   var cfg = window.SITE_CONFIG || {};
   var PHONE = '917420880067', PHONE_DISPLAY = '+91 74208 80067';
 
-  [['developer', cfg.DEFAULT_DEVELOPER_NAME], ['manager_name', cfg.DEFAULT_MANAGER_NAME], ['manager_email', cfg.DEFAULT_MANAGER_EMAIL]]
+  /* Fill Project, Developer and Relationship Manager fields from
+     config.js (one place to change them). defaultValue is set too so
+     form.reset() after a submit keeps the values. */
+  [['project', cfg.PROJECT_NAME], ['developer', cfg.DEFAULT_DEVELOPER_NAME], ['manager_name', cfg.DEFAULT_MANAGER_NAME], ['manager_email', cfg.DEFAULT_MANAGER_EMAIL]]
     .forEach(function (p) {
-      if (p[1]) document.querySelectorAll('[name="' + p[0] + '"]').forEach(function (el) { el.value = p[1]; });
+      if (p[1]) document.querySelectorAll('[name="' + p[0] + '"]').forEach(function (el) { el.defaultValue = el.value = p[1]; });
     });
 
   /* Mobile nav */
@@ -72,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function openModal(plan, intent) {
     overlay.dataset.intent = intent || 'enquire';
     if (plan) interest.value = plan;
-    document.getElementById('modalTitle').textContent = intent === 'whatsapp' ? 'Chat with us on WhatsApp' : intent === 'call' ? 'Request a Call Back' : 'Get Price & Brochure';
+    document.getElementById('modalTitle').textContent = intent === 'whatsapp' ? 'Chat with us on WhatsApp' : 'Get Price & Brochure';
     overlay.classList.add('open'); document.body.style.overflow = 'hidden';
     setTimeout(function () { document.getElementById('modal-name').focus(); }, 100);
   }
@@ -83,7 +86,10 @@ document.addEventListener('DOMContentLoaded', function () {
     if (e.key === 'Escape') { closeModal(); closeLb(); }
   });
   document.querySelectorAll('[data-open-modal]').forEach(function (el) {
-    el.addEventListener('click', function () { openModal(el.getAttribute('data-plan'), el.getAttribute('data-intent')); });
+    el.addEventListener('click', function () {
+      if (el.getAttribute('data-intent') === 'call') { window.location.href = 'tel:+' + PHONE; return; }
+      openModal(el.getAttribute('data-plan'), el.getAttribute('data-intent'));
+    });
   });
 
   modalForm.addEventListener('submit', function () {
@@ -93,11 +99,9 @@ document.addEventListener('DOMContentLoaded', function () {
     var d = e.detail || {}, intent = overlay.dataset.intent;
     if (intent === 'whatsapp') {
       var url = 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(
-        "Hi, I'm " + (d.name || '') + ". I'm interested in " + (d.interest || 'a home') + ' at Raahee Parna, Dudulgaon. My number is ' + (d.phone || '') + '. Please share details.');
+        "Hi, I'm " + (d.name || '') + ". I'm interested in " + (d.interest || 'a home') + ' at ' + (d.project || 'Raahee Parna') + '. My number is ' + (d.phone || '') + '. Please share details.');
       if (pendingWa && !pendingWa.closed) pendingWa.location.href = url; else window.open(url, '_blank');
       pendingWa = null;
-    } else if (intent === 'call') {
-      setTimeout(function () { window.location.href = 'tel:+' + PHONE; }, 300);
     }
   });
 
