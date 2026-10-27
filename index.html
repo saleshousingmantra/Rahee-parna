@@ -171,6 +171,7 @@
       "identifier": {
         "@type": "PropertyValue",
         "name": "MahaRERA Registration No.",
+        "url": "https://maharerait.maharashtra.gov.in/project/view/67633",
         "value": "PR1260002602355"
       },
       "brand": {
@@ -629,7 +630,14 @@
     .contact h2 { color: #fff; }
     .contact a { color: #e6c98a; }
     .form-wrap { background: #fff; color: var(--ink); border-radius: 14px; padding: 26px; }
-    .rera { font-size: .78rem; opacity: .8; }
+    .rera { font-size: .82rem; opacity: .9; }
+    .rera-box { display: flex; align-items: center; gap: 16px; margin-top: 1.2rem; }
+    .rera-qr, .foot-qr { display: block; flex: none; background: #fff; border-radius: 10px; padding: 6px; line-height: 0; }
+    .rera-qr img { width: 104px; height: 104px; }
+    .rera-box .rera { margin: 0; }
+    .foot-qr { width: 92px; margin-bottom: 1rem; }
+    .foot-qr img { width: 80px; height: 80px; }
+
 
     /* Forms */
     form label { display: block; font-size: .8rem; font-weight: 600; margin: .8em 0 .25em; color: var(--ink); }
@@ -970,7 +978,10 @@
           <h2 id="h-contact">Make Parna your home</h2>
           <p>Share your details and our team will call you with pricing, floor plans and the brochure.</p>
           <p>Prefer to talk? <a href="tel:+917420880067">+91 74208 80067</a></p>
-          <p class="rera">MahaRERA Reg. No.: PR1260002602355 &middot; maharera.maharashtra.gov.in</p>
+          <div class="rera-box">
+            <a class="rera-qr" href="https://maharerait.maharashtra.gov.in/project/view/67633" target="_blank" rel="noopener" aria-label="Verify Raahee Parna on the MahaRERA website"><img src="images/maharera-qr.webp" alt="MahaRERA QR code for Raahee Parna, registration number PR1260002602355" width="480" height="480" loading="lazy"></a>
+            <p class="rera">MahaRERA Reg. No.: <strong>PR1260002602355</strong><br>Scan the QR code to verify this project on <a href="https://maharerait.maharashtra.gov.in/project/view/67633" target="_blank" rel="noopener">maharera.maharashtra.gov.in</a></p>
+          </div>
         </div>
         <div class="form-wrap">
           <form id="footerForm" novalidate>
@@ -1012,6 +1023,7 @@
     <div class="container">
       <nav class="foot-nav" aria-label="Footer"><a href="#overview">Overview</a><a href="#pricing">Price list</a><a href="#amenities">Amenities</a><a href="#plans">Floor plans</a><a href="#location">Location</a><a href="blog/">Blog</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></nav>
       <img class="foot-logo" src="images/logo-white.webp" alt="Raahee Parna" width="600" height="333" loading="lazy">
+      <a class="foot-qr" href="https://maharerait.maharashtra.gov.in/project/view/67633" target="_blank" rel="noopener" aria-label="Verify Raahee Parna on the MahaRERA website"><img src="images/maharera-qr.webp" alt="MahaRERA QR code, registration number PR1260002602355" width="480" height="480" loading="lazy"></a>
       <p>Raahee Parna, Dudulgaon, Pune &middot; MahaRERA Reg. No. PR1260002602355. Renderings are artistic impressions; specifications, plans and amenities are indicative and subject to change. Please refer to MahaRERA for registered details.</p>
       <p>&copy; <span id="year">2026</span> Raahee Parna. All rights reserved.</p>
     </div>
