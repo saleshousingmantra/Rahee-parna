@@ -23,7 +23,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,500&display=swap" rel="stylesheet">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -49,16 +49,17 @@
       --teal: #0f4c57; --teal-2: #0b3a43; --teal-3: #e6f0f1;
       --gold: #b8934a; --bronze: #9a4d2c;
       --cream: #faf8f3; --tint: #f1ede4; --ink: #1f2a2c; --muted: #5b6769; --line: #ddd6c8;
-      --serif: "Cormorant Garamond", Georgia, serif;
-      --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --serif: "Roboto", sans-serif;
+      --sans: "Roboto", sans-serif;
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; scroll-padding-top: 70px; }
     body { margin: 0; font-family: var(--sans); color: var(--ink); background: var(--cream); line-height: 1.65; -webkit-font-smoothing: antialiased; }
     img { max-width: 100%; display: block; }
-    h1, h2, h3 { font-family: var(--serif); color: var(--teal); line-height: 1.12; margin: 0 0 .45em; font-weight: 600; }
-    h2 { font-size: clamp(2rem, 4.2vw, 3rem); }
-    h3 { font-size: 1.5rem; }
+    button, input, select, textarea { font-family: inherit; }
+    h1, h2, h3 { font-family: var(--serif); color: var(--teal); line-height: 1.2; margin: 0 0 .45em; font-weight: 500; }
+    h2 { font-size: clamp(1.7rem, 3.6vw, 2.5rem); }
+    h3 { font-size: 1.3rem; }
     p { margin: 0 0 1em; }
     a { color: var(--bronze); }
     em { font-style: italic; color: var(--gold); }
@@ -103,20 +104,20 @@
     @media (max-width: 900px) { .hero-bg::after { background: linear-gradient(180deg, rgba(8,40,47,.45) 0%, rgba(8,40,47,.7) 35%, rgba(8,40,47,.92) 100%); } }
     .hero-in { position: relative; display: grid; grid-template-columns: 1.3fr .8fr; gap: 40px; align-items: end; }
     .hero .label { color: #e6c98a; }
-    .hero h1 { color: #fff; font-size: clamp(2rem, 4.6vw, 3.4rem); max-width: 18em; margin: 0 0 .4em; text-wrap: balance; }
+    .hero h1 { color: #fff; font-size: clamp(1.7rem, 4vw, 3rem); max-width: 18em; margin: 0 0 .4em; text-wrap: balance; }
     .hero h1 em { color: #e6c98a; }
     .hero h1 .hero-logo { display: block; }
     .hero h1 .h1-sub { display: block; }
     .hero p.tag { font-size: clamp(1.05rem, 2vw, 1.3rem); max-width: 32em; color: #edf3f3; }
     .hero-cta { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.4rem; }
     .hero-card { background: rgba(255,255,255,.96); color: var(--ink); border-radius: 14px; padding: 24px; box-shadow: 0 20px 60px rgba(0,0,0,.3); }
-    .hero-card h3 { font-size: 1.6rem; margin-bottom: .2em; }
+    .hero-card h3 { font-size: 1.4rem; margin-bottom: .2em; }
     .hero-card p { font-size: .9rem; color: var(--muted); margin-bottom: .8em; }
 
     /* Stats strip */
     .stats { background: var(--teal); color: #fff; }
     .stats ul { list-style: none; margin: 0; padding: 26px 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; text-align: center; }
-    .stats strong { display: block; font: 600 2.4rem var(--serif); color: #e6c98a; line-height: 1.1; }
+    .stats strong { display: block; font: 500 2rem var(--serif); color: #e6c98a; line-height: 1.1; }
     .stats span { font-size: .85rem; opacity: .85; }
 
     /* Layout helpers */
@@ -130,7 +131,7 @@
     /* Homes */
     .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 2.2rem; }
     .card { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 28px 24px; text-align: center; }
-    .card .big { font: 600 2.6rem var(--serif); color: var(--teal); line-height: 1; }
+    .card .big { font: 500 2.1rem var(--serif); color: var(--teal); line-height: 1; }
     .card p { color: var(--muted); font-size: .95rem; margin: .6em 0 1.2em; }
     .card .btn { padding: .6em 1.4em; font-size: .88rem; }
 
@@ -146,7 +147,7 @@
     /* Amenities */
     .amen { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 2.2rem; }
     .amen div { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 22px; }
-    .amen h3 { font-size: 1.35rem; color: var(--bronze); margin-bottom: .5em; }
+    .amen h3 { font-size: 1.15rem; color: var(--bronze); margin-bottom: .5em; }
     .amen ul { margin: 0; padding-left: 1.1em; color: var(--muted); font-size: .92rem; }
 
     /* Plans */
@@ -167,7 +168,7 @@
     .dev { background: var(--teal-2); color: #e4eeef; }
     .dev h2 { color: #fff; }
     .dev .nums { display: flex; flex-wrap: wrap; gap: 2.5rem; margin-top: 1.4rem; }
-    .dev .nums strong { display: block; font: 600 2.3rem var(--serif); color: #e6c98a; line-height: 1.1; }
+    .dev .nums strong { display: block; font: 500 1.9rem var(--serif); color: #e6c98a; line-height: 1.1; }
     .contact { background: linear-gradient(135deg, var(--teal), var(--teal-2)); color: #fff; }
     .contact h2 { color: #fff; }
     .contact a { color: #e6c98a; }
@@ -248,7 +249,7 @@
     @media (max-width: 900px) {
       html { scroll-padding-top: 60px; }
       .section { padding: 38px 0; }
-      h2 { font-size: 1.75rem; }
+      h2 { font-size: 1.5rem; }
       .lead { font-size: .95rem; }
       .header-in { height: 56px; }
       .brand img { height: 38px; }
@@ -257,12 +258,12 @@
       .hero-in { gap: 0; }
       .hero-card { display: none; }
       .hero-logo { height: 70px !important; margin: 0 0 .6rem !important; }
-      .hero h1 { font-size: 1.55rem; margin-bottom: .35em; }
+      .hero h1 { font-size: 1.35rem; margin-bottom: .35em; }
       .hero p.tag { font-size: .92rem; line-height: 1.5; margin-bottom: 0; }
       .hero-cta { flex-wrap: nowrap; gap: .5rem; margin-top: 1rem; }
       .hero-cta .btn { flex: 1; padding: .8em .4em; font-size: .85rem; text-align: center; white-space: nowrap; }
       .stats ul { grid-template-columns: repeat(4, 1fr); padding: 14px 0; gap: 4px; }
-      .stats strong { font-size: 1.5rem; }
+      .stats strong { font-size: 1.3rem; }
       .stats span { font-size: .68rem; display: block; line-height: 1.25; }
       .swipe-hint { display: block; font-size: .78rem; color: var(--gold); margin: 0 0 .5rem; letter-spacing: .04em; }
       .center .swipe-hint { margin-top: -.4rem; }
@@ -270,7 +271,7 @@
       .cards::-webkit-scrollbar, .grid::-webkit-scrollbar { display: none; }
       .cards { margin-top: .6rem; }
       .card { flex: 0 0 72%; scroll-snap-align: center; padding: 20px 16px; }
-      .card .big { font-size: 2.1rem; }
+      .card .big { font-size: 1.8rem; }
       .grid { margin-top: .8rem; }
       .grid button, .grid button.w, .grid button.t { flex: 0 0 84%; scroll-snap-align: center; aspect-ratio: 4/3; grid-column: auto; grid-row: auto; }
       .amen { display: flex; flex-direction: column; gap: 8px; margin-top: 1.2rem; }
@@ -284,7 +285,7 @@
       .two { gap: 20px; }
       .tabs { margin: 1rem 0; }
       .dev .nums { gap: 1.2rem 1.6rem; }
-      .dev .nums strong { font-size: 1.8rem; }
+      .dev .nums strong { font-size: 1.5rem; }
       .form-wrap { padding: 18px; }
       .site-footer { padding-bottom: 76px; }
     }
