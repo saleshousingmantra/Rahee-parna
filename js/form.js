@@ -124,6 +124,64 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     /* =====================================================
+       FIELD VALIDATION — messages show directly below each field
+    ===================================================== */
+
+    const VALIDATORS = {
+        name: function (v) {
+            return v.length >= 3 ? "" : "Please enter your full name (at least 3 characters).";
+        },
+        phone: function (v) {
+            if (!v) return "Please enter your mobile number.";
+            return /^[6-9][0-9]{9}$/.test(v) ? "" : "Enter a valid 10-digit mobile number starting with 6, 7, 8 or 9.";
+        },
+        email: function (v) {
+            if (!v) return "Please enter your email address.";
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? "" : "Enter a valid email address, e.g. name@example.com.";
+        },
+        interest: function (v) {
+            return v ? "" : "Please select what you're interested in.";
+        }
+    };
+
+    function validateField(field) {
+        if (!field) return true;
+        const check = VALIDATORS[field.name];
+        if (!check) return true;
+        const message = check(field.value.trim());
+        if (message) {
+            showFieldError(field, message);
+            return false;
+        }
+        clearFieldError(field);
+        return true;
+    }
+
+    /* Check a field when the person leaves it, so the message
+       appears right under it instead of only after pressing submit. */
+    document.querySelectorAll('form input, form select').forEach(function (field) {
+        if (!VALIDATORS[field.name]) return;
+        field.addEventListener("blur", function () {
+            validateField(field);
+        });
+    });
+
+    /* Form-level message (e.g. server error) shown under the button. */
+    function setFormError(form, message) {
+        let el = form.querySelector(".form-error");
+        if (!el) {
+            el = document.createElement("p");
+            el.className = "form-error";
+            el.setAttribute("role", "alert");
+            const btn = form.querySelector('button[type="submit"]');
+            if (btn && btn.parentNode) btn.parentNode.insertBefore(el, btn.nextSibling);
+            else form.appendChild(el);
+        }
+        el.textContent = message || "";
+        el.classList.toggle("active", !!message);
+    }
+
+    /* =====================================================
        SUCCESS MESSAGE
        Looks for a .success-message next to the form first,
        falls back to #successMessage for older markup.
@@ -168,43 +226,9 @@ document.addEventListener("DOMContentLoaded", function () {
        whether the form is ready to send.
     ===================================================== */
 
-    function formIsReady(form) {
-        const name = form.querySelector('[name="name"]')?.value.trim() || "";
-        const phone = form.querySelector('[name="phone"]')?.value.trim() || "";
-        const email = form.querySelector('[name="email"]')?.value.trim() || "";
-        const interest = form.querySelector('[name="interest"]')?.value.trim() || "";
-
-        return (
-            name.length >= 3 &&
-            /^[6-9][0-9]{9}$/.test(phone) &&
-            /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) &&
-            interest.length > 0
-        );
-    }
-
-    function updateSubmitState(form) {
-        const submitButton = form.querySelector('button[type="submit"]');
-        if (!submitButton) return;
-
-        const ready = formIsReady(form);
-        submitButton.disabled = !ready;
-        submitButton.setAttribute("aria-disabled", String(!ready));
-    }
-
-    forms.forEach(function (form) {
-        /* Start disabled, then check right away in case the browser has
-           already autofilled the fields (e.g. saved form data). */
-        updateSubmitState(form);
-
-        ["name", "phone", "email", "interest"].forEach(function (fieldName) {
-            const field = form.querySelector('[name="' + fieldName + '"]');
-            if (!field) return;
-            const evt = field.tagName === "SELECT" ? "change" : "input";
-            field.addEventListener(evt, function () {
-                updateSubmitState(form);
-            });
-        });
-    });
+    /* The submit button stays enabled: pressing it with missing or
+       invalid details shows a message under each affected field. */
+    function updateSubmitState() {}
 
     forms.forEach(function (form) {
 
@@ -248,35 +272,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
             /* Clear any errors left over from a previous attempt. */
             [nameInput, phoneInput, emailInput, interestInput].forEach(clearFieldError);
+            setFormError(form, "");
 
-            /* VALIDATE NAME — MANDATORY */
-            if (name.length < 3) {
-                focusAndScroll(nameInput, "Please enter your full name.");
-                return;
-            }
-
-            /* VALIDATE PHONE — MANDATORY */
-            if (!/^[6-9][0-9]{9}$/.test(phone)) {
-                focusAndScroll(
-                    phoneInput,
-                    "Please enter a valid 10-digit mobile number."
-                );
-                return;
-            }
-
-            /* VALIDATE EMAIL — MANDATORY */
-            if (!email) {
-                focusAndScroll(emailInput, "Please enter your email address.");
-                return;
-            }
-            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                focusAndScroll(emailInput, "Please enter a valid email address.");
-                return;
-            }
-
-            /* VALIDATE INTEREST — MANDATORY */
-            if (!interest) {
-                focusAndScroll(interestInput, "Please select what you're interested in.");
+            /* VALIDATE ALL MANDATORY FIELDS — show every problem at once,
+               each directly under its own field, then focus the first. */
+            const fields = [nameInput, phoneInput, emailInput, interestInput];
+            const invalid = fields.filter(function (f) { return !validateField(f); });
+            if (invalid.length) {
+                invalid[0].scrollIntoView({ behavior: "smooth", block: "center" });
+                setTimeout(function () { invalid[0].focus(); }, 400);
                 return;
             }
 
@@ -351,6 +355,7 @@ document.addEventListener("DOMContentLoaded", function () {
                  */
 
                 showSuccessMessage(form);
+                setFormError(form, "");
                 form.reset();
                 [nameInput, phoneInput, emailInput, interestInput].forEach(clearFieldError);
                 updateSubmitState(form);
@@ -362,9 +367,9 @@ document.addEventListener("DOMContentLoaded", function () {
             } catch (error) {
                 console.error("Submission Error:", error);
 
-                alert(
-                    error.message ||
-                        "Unable to submit your enquiry. Please try again."
+                setFormError(
+                    form,
+                    error.message || "Unable to submit your enquiry. Please try again."
                 );
 
             } finally {
