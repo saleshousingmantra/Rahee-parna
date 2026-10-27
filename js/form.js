@@ -356,7 +356,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 updateSubmitState(form);
 
                 setTimeout(function () {
-                    window.location.href = "/thank-you/";
+                    window.location.href = "thank-you/";
                 }, 1500);
 
             } catch (error) {
