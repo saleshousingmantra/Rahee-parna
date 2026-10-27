@@ -32,6 +32,19 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
   }
 
+
+  /* Amenity accordion (collapsed on phones, always open on desktop) */
+  document.querySelectorAll('.acc-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      if (window.innerWidth > 900) return;
+      var box = btn.closest('.acc');
+      var open = box.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+  var firstAcc = document.querySelector('.acc');
+  if (firstAcc && window.innerWidth <= 900) { firstAcc.classList.add('open'); firstAcc.querySelector('.acc-btn').setAttribute('aria-expanded', 'true'); }
+
   /* Floor-plan tabs */
   var tabs = document.querySelectorAll('[data-plan-tab]');
   tabs.forEach(function (t) {

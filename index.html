@@ -35,6 +35,14 @@
     "brand": { "@type": "Organization", "name": "Raahee Corp" }
   }
   </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+  {"@type":"Question","name":"Where is Raahee Parna located?","acceptedAnswer":{"@type":"Answer","text":"Raahee Parna is in Dudulgaon, near Moshi in PCMC, Pune, close to the Indrayani River."}},
+  {"@type":"Question","name":"Which configurations are available?","acceptedAnswer":{"@type":"Answer","text":"2, 2.5 and 3 BHK homes across the B, C and D wings."}},
+  {"@type":"Question","name":"How big is the project?","acceptedAnswer":{"@type":"Answer","text":"686 homes in 7 towers of 14 floors on 3.5 acres with 40+ lifestyle amenities."}},
+  {"@type":"Question","name":"Is Raahee Parna RERA registered?","acceptedAnswer":{"@type":"Answer","text":"Yes. MahaRERA registration number PR1260002602355."}}
+  ]}
+  </script>
   <style>
     :root {
       --teal: #0f4c57; --teal-2: #0b3a43; --teal-3: #e6f0f1;
@@ -189,6 +197,19 @@
     .lightbox img { max-width: 100%; max-height: 84vh; border-radius: 8px; }
     .lightbox p { color: #ddd; margin: .8em 0 0; font-size: .9rem; }
 
+
+    .swipe-hint { display: none; }
+    .acc h3 { margin: 0; }
+    .acc-btn { all: unset; box-sizing: border-box; font: inherit; color: inherit; cursor: default; display: block; width: 100%; }
+    .faq { max-width: 780px; }
+    .faq details { border-bottom: 1px solid var(--line); padding: 1em 0; }
+    .faq summary { cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 12px; align-items: center; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; font-size: 1.4rem; color: var(--gold); line-height: 1; transition: transform .2s; }
+    .faq details[open] summary::after { transform: rotate(45deg); }
+    .faq details p { margin: .7em 0 0; color: var(--muted); }
+    .faq-sec-gap { height: 0; }
+
     /* Footer + floating */
     .site-footer { background: #072b32; color: #9db4b7; font-size: .82rem; padding: 28px 0 90px; }
     .site-footer p { margin: 0 0 .6em; }
@@ -215,6 +236,51 @@
       .float-bar { display: flex; }
     }
     @media (max-width: 520px) { .grid button, .grid button.w { grid-column: span 12; } }
+
+    /* Mobile: denser, swipeable, tappable */
+    @media (max-width: 900px) {
+      html { scroll-padding-top: 60px; }
+      .section { padding: 38px 0; }
+      h2 { font-size: 1.75rem; }
+      .lead { font-size: .95rem; }
+      .header-in { height: 56px; }
+      .brand img { height: 38px; }
+      .main-nav { top: 56px; }
+      .hero { min-height: 0; padding: 78px 0 22px; }
+      .hero-in { gap: 0; }
+      .hero-card { display: none; }
+      .hero-logo { height: 70px !important; margin: 0 0 .6rem !important; }
+      .hero h1 { font-size: 1.55rem; margin-bottom: .35em; }
+      .hero p.tag { font-size: .92rem; line-height: 1.5; margin-bottom: 0; }
+      .hero-cta { flex-wrap: nowrap; gap: .5rem; margin-top: 1rem; }
+      .hero-cta .btn { flex: 1; padding: .8em .4em; font-size: .85rem; text-align: center; white-space: nowrap; }
+      .stats ul { grid-template-columns: repeat(4, 1fr); padding: 14px 0; gap: 4px; }
+      .stats strong { font-size: 1.5rem; }
+      .stats span { font-size: .68rem; display: block; line-height: 1.25; }
+      .swipe-hint { display: block; font-size: .78rem; color: var(--gold); margin: 0 0 .5rem; letter-spacing: .04em; }
+      .center .swipe-hint { margin-top: -.4rem; }
+      .cards, .grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; margin-inline: -16px; padding: 4px 16px 10px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+      .cards::-webkit-scrollbar, .grid::-webkit-scrollbar { display: none; }
+      .cards { margin-top: .6rem; }
+      .card { flex: 0 0 72%; scroll-snap-align: center; padding: 20px 16px; }
+      .card .big { font-size: 2.1rem; }
+      .grid { margin-top: .8rem; }
+      .grid button, .grid button.w, .grid button.t { flex: 0 0 84%; scroll-snap-align: center; aspect-ratio: 4/3; grid-column: auto; grid-row: auto; }
+      .amen { display: flex; flex-direction: column; gap: 8px; margin-top: 1.2rem; }
+      .amen div { padding: 0; }
+      .acc-btn { cursor: pointer; padding: 14px 16px; display: flex; justify-content: space-between; align-items: center; }
+      .acc-btn::after { content: "+"; font: 400 1.5rem var(--sans); color: var(--gold); transition: transform .2s; }
+      .acc-btn[aria-expanded="true"]::after { transform: rotate(45deg); }
+      .acc ul { display: none; padding: 0 16px 14px 34px; }
+      .acc.open ul { display: block; }
+      .near li { font-size: .85rem; padding: .35em 0; }
+      .two { gap: 20px; }
+      .tabs { margin: 1rem 0; }
+      .dev .nums { gap: 1.2rem 1.6rem; }
+      .dev .nums strong { font-size: 1.8rem; }
+      .form-wrap { padding: 18px; }
+      .site-footer { padding-bottom: 76px; }
+    }
   </style>
 </head>
 <body>
@@ -289,6 +355,7 @@
         <p class="label">Residences</p>
         <h2>Homes that give life room to grow</h2>
         <p class="lead">Choose from signature 2, 2.5 and 3 BHK layouts, designed around light, ventilation and everyday ease.</p>
+        <p class="swipe-hint">Swipe to compare &rarr;</p>
         <div class="cards">
           <div class="card reveal"><div class="big">2 BHK</div><p>Efficient, well-lit layouts for young families and first-time buyers.</p><button class="btn btn-teal" data-open-modal data-plan="2 BHK">Get Price</button></div>
           <div class="card reveal"><div class="big">2.5 BHK</div><p>An extra flexible room for a study, nursery or work-from-home corner.</p><button class="btn btn-teal" data-open-modal data-plan="2.5 BHK">Get Price</button></div>
@@ -300,7 +367,7 @@
 
     <section class="section" id="gallery">
       <div class="container">
-        <div class="center"><p class="label">Gallery</p><h2>A world that grows around you</h2></div>
+        <div class="center"><p class="label">Gallery</p><h2>A world that grows around you</h2><p class="swipe-hint">Swipe to explore &rarr;</p></div>
         <div class="grid">
           <button class="w" data-zoom="images/aerial-1.jpg" data-alt="Aerial view of Raahee Parna"><img src="images/aerial-1.webp" alt="Aerial view of Raahee Parna" loading="lazy"><span>Aerial view</span></button>
           <button class="t" data-zoom="images/aerial-2.jpg" data-alt="Raahee Parna among the greens"><img src="images/aerial-2.webp" alt="Raahee Parna among the greens" loading="lazy"><span>Surrounded by green</span></button>
@@ -317,12 +384,12 @@
       <div class="container">
         <div class="center"><p class="label">Lifestyle amenities</p><h2>Life has many dimensions. Parna has space for all.</h2></div>
         <div class="amen">
-          <div class="reveal"><h3>Recreation &amp; Sports</h3><ul><li>Cricket Turf</li><li>Squash &amp; Badminton Court</li><li>Basketball Court</li><li>Climbing Wall</li><li>Table Tennis &amp; Carrom</li><li>Riffle Shooting Area</li><li>Jogging Track / Skating Rink</li></ul></div>
-          <div class="reveal"><h3>Wellness &amp; Fitness</h3><ul><li>AC Gym &amp; Fitness Area</li><li>Zumba Studio</li><li>Yoga &amp; Meditation</li><li>Acupressure Pathway</li><li>Open Air Gymnasium</li><li>Oxygen Park</li></ul></div>
-          <div class="reveal"><h3>Leisure &amp; Social</h3><ul><li>Clubhouse &amp; Multi Purpose Hall</li><li>Library &amp; Cafeteria</li><li>Amphitheatre</li><li>Party Lawn</li><li>BBQ &amp; Camping Fire Area</li><li>Swimming Pool with separate Kids &amp; Adult pools</li></ul></div>
-          <div class="reveal"><h3>Nature &amp; Outdoors</h3><ul><li>Landscape Garden</li><li>Walking Pathway</li><li>Children&rsquo;s Play Area</li><li>Senior Citizen Sit Out</li><li>Temple</li></ul></div>
-          <div class="reveal"><h3>Work &amp; Convenience</h3><ul><li>Co Working Space</li><li>Wi Fi Zone</li><li>Provision for Salon &amp; Day Care</li><li>Common Car Wash Centre</li><li>EV Charging Facility</li></ul></div>
-          <div class="reveal"><h3>Security &amp; Services</h3><ul><li>Main Gate Secure Entrance</li><li>CCTV in Common Areas</li><li>Video Door Phone</li><li>Power Backup</li><li>Fire Safety</li></ul></div>
+          <div class="reveal acc"><h3><button type="button" class="acc-btn" aria-expanded="false">Recreation &amp; Sports</button></h3><ul><li>Cricket Turf</li><li>Squash &amp; Badminton Court</li><li>Basketball Court</li><li>Climbing Wall</li><li>Table Tennis &amp; Carrom</li><li>Riffle Shooting Area</li><li>Jogging Track / Skating Rink</li></ul></div>
+          <div class="reveal acc"><h3><button type="button" class="acc-btn" aria-expanded="false">Wellness &amp; Fitness</button></h3><ul><li>AC Gym &amp; Fitness Area</li><li>Zumba Studio</li><li>Yoga &amp; Meditation</li><li>Acupressure Pathway</li><li>Open Air Gymnasium</li><li>Oxygen Park</li></ul></div>
+          <div class="reveal acc"><h3><button type="button" class="acc-btn" aria-expanded="false">Leisure &amp; Social</button></h3><ul><li>Clubhouse &amp; Multi Purpose Hall</li><li>Library &amp; Cafeteria</li><li>Amphitheatre</li><li>Party Lawn</li><li>BBQ &amp; Camping Fire Area</li><li>Swimming Pool with separate Kids &amp; Adult pools</li></ul></div>
+          <div class="reveal acc"><h3><button type="button" class="acc-btn" aria-expanded="false">Nature &amp; Outdoors</button></h3><ul><li>Landscape Garden</li><li>Walking Pathway</li><li>Children&rsquo;s Play Area</li><li>Senior Citizen Sit Out</li><li>Temple</li></ul></div>
+          <div class="reveal acc"><h3><button type="button" class="acc-btn" aria-expanded="false">Work &amp; Convenience</button></h3><ul><li>Co Working Space</li><li>Wi Fi Zone</li><li>Provision for Salon &amp; Day Care</li><li>Common Car Wash Centre</li><li>EV Charging Facility</li></ul></div>
+          <div class="reveal acc"><h3><button type="button" class="acc-btn" aria-expanded="false">Security &amp; Services</button></h3><ul><li>Main Gate Secure Entrance</li><li>CCTV in Common Areas</li><li>Video Door Phone</li><li>Power Backup</li><li>Fire Safety</li></ul></div>
         </div>
       </div>
     </section>
@@ -366,6 +433,17 @@
           </ul>
         </div>
         <div class="frame reveal"><button style="padding:0;border:0;background:none;cursor:zoom-in;width:100%" data-zoom="images/location-map.jpg" data-alt="Raahee Parna location map"><img src="images/location-map.webp" alt="Location map of Raahee Parna, Dudulgaon" loading="lazy" width="1600" height="1066"></button></div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container faq">
+        <div class="center"><p class="label">Questions</p><h2>Raahee Parna, answered</h2></div>
+        <details><summary>Where is Raahee Parna located?</summary><p>Raahee Parna is in Dudulgaon, near Moshi in PCMC, Pune, close to the Indrayani River. DMart, Reliance Trends, schools and hospitals are within about 3&ndash;10 minutes.</p></details>
+        <details><summary>Which configurations are available?</summary><p>The project offers 2, 2.5 and 3 BHK homes across the B, C and D wings.</p></details>
+        <details><summary>How big is the project?</summary><p>686 homes in 7 towers of 14 floors, spread over 3.5 acres with 40+ lifestyle amenities.</p></details>
+        <details><summary>Is Raahee Parna RERA registered?</summary><p>Yes. The MahaRERA registration number is PR1260002602355. You can verify it at maharera.maharashtra.gov.in.</p></details>
+        <details><summary>How do I get the price and floor plans?</summary><p>Tap Get Price, share your name and number, and our team will call you with pricing, floor plans and the brochure. You can also call +91 74208 80067.</p></details>
       </div>
     </section>
 
