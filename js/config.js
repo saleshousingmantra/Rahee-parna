@@ -37,11 +37,8 @@ window.SITE_CONFIG = {
   /* NOTE ON EMAIL ROUTING:
      Every new enquiry row is emailed (by a database trigger and the
      send-enquiry-email Edge Function) to the manager_email saved on
-     it, i.e. DEFAULT_MANAGER_EMAIL. Only RM addresses on the
-     function's allow-list (ALLOWED_MANAGER_EMAILS) are mailed —
-     config.js runs in the browser and can be spoofed. Any other
-     address falls back to FALLBACK_EMAIL. When you assign a new RM
-     here, add their email to that allow-list too. */
+     it, i.e. DEFAULT_MANAGER_EMAIL. Enquiries with no valid
+     manager_email go to the function's FALLBACK_EMAIL. */
 
 };
 
