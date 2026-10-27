@@ -32,7 +32,7 @@ window.SITE_CONFIG = {
   DEFAULT_DEVELOPER_NAME: "Raahee Corp",
 
   DEFAULT_MANAGER_NAME: "Nikhil Kamble",
-  DEFAULT_MANAGER_EMAIL: ""   /* TODO: add Nikhil Kamble's email (must also be on the Edge Function allow-list) */
+  DEFAULT_MANAGER_EMAIL: "nikhil.housingmantra@gmail.com"
 
   /* NOTE ON EMAIL ROUTING:
      Every new enquiry row is emailed (by a database trigger and the
