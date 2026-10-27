@@ -150,8 +150,18 @@
     .card .price { background: var(--teal-3); border-radius: 10px; padding: .7em .8em; font-size: .88rem; color: var(--ink); margin: 0 0 1.1em; }
     .card .price b { display: block; font-size: 1.15rem; color: var(--teal); font-weight: 700; }
     .card .price span { display: block; color: var(--muted); font-size: .8rem; margin-top: .15em; }
+    .price-lock { position: relative; display: inline-block; background: none; border: 0; padding: 0; margin: 0; font: inherit; color: inherit; cursor: pointer; }
+    .price-lock .amt { display: inline-block; filter: blur(7px); user-select: none; transition: filter .3s; }
+    .price-lock .lk { position: absolute; inset: 0; display: grid; place-items: center; }
+    .price-lock .lk-ic { padding: 5px; box-sizing: content-box; border-radius: 50%; background: var(--teal); color: #fff; box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+    .price-lock:hover .lk-ic, .price-lock:focus-visible .lk-ic { background: var(--gold); color: #1b2426; }
+    .price-lock:focus-visible { outline: 2px solid var(--teal); outline-offset: 4px; border-radius: 6px; }
+    .prices-unlocked .price-lock { cursor: default; pointer-events: none; }
+    .prices-unlocked .price-lock .amt { filter: none; user-select: auto; }
+    .prices-unlocked .price-lock .lk { display: none; }
     .pricing { margin-top: 2.6rem; text-align: left; }
     .pricing h3 { text-align: center; font-size: 1.6rem; }
+    .pricing > p.center { margin-top: 1.4rem; }
     .table-wrap { max-width: 760px; margin-inline: auto; overflow-x: auto; background: #fff; border: 1px solid var(--line); border-radius: 12px; -webkit-overflow-scrolling: touch; }
     .pricing table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; font-size: .92rem; }
     .pricing th, .pricing td { padding: .75em .9em; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--line); }
@@ -388,9 +398,9 @@
         <p class="lead">Choose from 2, 2.5 and 3 BHK layouts from 685 to 1,008 sq ft carpet, designed around light, ventilation and everyday ease.</p>
         <p class="swipe-hint">Swipe to compare &rarr;</p>
         <div class="cards">
-          <div class="card reveal"><div class="big">2 BHK</div><p class="size">685 &ndash; 707 sq ft carpet</p><p>Efficient, well-lit layouts for young families and first-time buyers.</p><p class="price">Starting from <b>&#8377;58.53 Lakh*</b></p><button class="btn btn-teal" data-open-modal data-plan="2 BHK">Get Price</button></div>
-          <div class="card reveal"><div class="big">2.5 BHK</div><p class="size">832 &ndash; 894 sq ft carpet</p><p>An extra flexible room for a study, nursery or work-from-home corner.</p><p class="price">Starting from <b>&#8377;68.14 Lakh*</b></p><button class="btn btn-teal" data-open-modal data-plan="2.5 BHK">Get Price</button></div>
-          <div class="card reveal"><div class="big">3 BHK</div><p class="size">966 &ndash; 1,008 sq ft carpet</p><p>Spacious family homes with room for every generation.</p><p class="price">Starting from <b>&#8377;79.06 Lakh*</b></p><button class="btn btn-teal" data-open-modal data-plan="3 BHK">Get Price</button></div>
+          <div class="card reveal"><div class="big">2 BHK</div><p class="size">685 &ndash; 707 sq ft carpet</p><p>Efficient, well-lit layouts for young families and first-time buyers.</p><p class="price">Starting from <b><button type="button" class="price-lock" data-open-modal data-plan="2 BHK" aria-label="Price locked. Enquire to unlock the 2 BHK price"><span class="amt">&#8377;58.53 Lakh*</span><span class="lk"><svg class="lk-ic" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2zm-7-2a2 2 0 0 1 4 0v2h-4V7zm3 9.7V18h-2v-1.3a2 2 0 1 1 2 0z"/></svg></span></button></b></p><button class="btn btn-teal" data-open-modal data-plan="2 BHK">Get Price</button></div>
+          <div class="card reveal"><div class="big">2.5 BHK</div><p class="size">832 &ndash; 894 sq ft carpet</p><p>An extra flexible room for a study, nursery or work-from-home corner.</p><p class="price">Starting from <b><button type="button" class="price-lock" data-open-modal data-plan="2.5 BHK" aria-label="Price locked. Enquire to unlock the 2.5 BHK price"><span class="amt">&#8377;68.14 Lakh*</span><span class="lk"><svg class="lk-ic" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2zm-7-2a2 2 0 0 1 4 0v2h-4V7zm3 9.7V18h-2v-1.3a2 2 0 1 1 2 0z"/></svg></span></button></b></p><button class="btn btn-teal" data-open-modal data-plan="2.5 BHK">Get Price</button></div>
+          <div class="card reveal"><div class="big">3 BHK</div><p class="size">966 &ndash; 1,008 sq ft carpet</p><p>Spacious family homes with room for every generation.</p><p class="price">Starting from <b><button type="button" class="price-lock" data-open-modal data-plan="3 BHK" aria-label="Price locked. Enquire to unlock the 3 BHK price"><span class="amt">&#8377;79.06 Lakh*</span><span class="lk"><svg class="lk-ic" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2zm-7-2a2 2 0 0 1 4 0v2h-4V7zm3 9.7V18h-2v-1.3a2 2 0 1 1 2 0z"/></svg></span></button></b></p><button class="btn btn-teal" data-open-modal data-plan="3 BHK">Get Price</button></div>
         </div>
 
         <div id="pricing" class="pricing reveal">
@@ -400,13 +410,13 @@
               <caption class="sr">Raahee Parna price list: carpet area, unit type and total package in lakhs</caption>
               <thead><tr><th scope="col">Carpet (sq ft)</th><th scope="col">Type</th><th scope="col">Total package</th></tr></thead>
               <tbody>
-<tr><th scope="row">685</th><td>2 BHK</td><td class="tot">&#8377;58.53 Lakh*</td></tr>
-<tr><th scope="row">691</th><td>2 BHK</td><td class="tot">&#8377;59.04 Lakh*</td></tr>
-<tr><th scope="row">707</th><td>2 BHK</td><td class="tot">&#8377;60.40 Lakh*</td></tr>
-<tr><th scope="row">832</th><td>2.5 BHK</td><td class="tot">&#8377;68.14 Lakh*</td></tr>
-<tr><th scope="row">894</th><td>2.5 BHK</td><td class="tot">&#8377;73.19 Lakh*</td></tr>
-<tr><th scope="row">966</th><td>3 BHK</td><td class="tot">&#8377;79.06 Lakh*</td></tr>
-<tr><th scope="row">1008</th><td>3 BHK</td><td class="tot">&#8377;82.49 Lakh*</td></tr>
+<tr><th scope="row">685</th><td>2 BHK</td><td class="tot"><button type="button" class="price-lock" data-open-modal data-plan="2 BHK" aria-label="Price locked. Enquire to unlock the 2 BHK price"><span class="amt">&#8377;58.53 Lakh*</span><span class="lk"><svg class="lk-ic" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2zm-7-2a2 2 0 0 1 4 0v2h-4V7zm3 9.7V18h-2v-1.3a2 2 0 1 1 2 0z"/></svg></span></button></td></tr>
+<tr><th scope="row">691</th><td>2 BHK</td><td class="tot"><button type="button" class="price-lock" data-open-modal data-plan="2 BHK" aria-label="Price locked. Enquire to unlock the 2 BHK price"><span class="amt">&#8377;59.04 Lakh*</span><span class="lk"><svg class="lk-ic" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2zm-7-2a2 2 0 0 1 4 0v2h-4V7zm3 9.7V18h-2v-1.3a2 2 0 1 1 2 0z"/></svg></span></button></td></tr>
+<tr><th scope="row">707</th><td>2 BHK</td><td class="tot"><button type="button" class="price-lock" data-open-modal data-plan="2 BHK" aria-label="Price locked. Enquire to unlock the 2 BHK price"><span class="amt">&#8377;60.40 Lakh*</span><span class="lk"><svg class="lk-ic" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2zm-7-2a2 2 0 0 1 4 0v2h-4V7zm3 9.7V18h-2v-1.3a2 2 0 1 1 2 0z"/></svg></span></button></td></tr>
+<tr><th scope="row">832</th><td>2.5 BHK</td><td class="tot"><button type="button" class="price-lock" data-open-modal data-plan="2.5 BHK" aria-label="Price locked. Enquire to unlock the 2.5 BHK price"><span class="amt">&#8377;68.14 Lakh*</span><span class="lk"><svg class="lk-ic" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2zm-7-2a2 2 0 0 1 4 0v2h-4V7zm3 9.7V18h-2v-1.3a2 2 0 1 1 2 0z"/></svg></span></button></td></tr>
+<tr><th scope="row">894</th><td>2.5 BHK</td><td class="tot"><button type="button" class="price-lock" data-open-modal data-plan="2.5 BHK" aria-label="Price locked. Enquire to unlock the 2.5 BHK price"><span class="amt">&#8377;73.19 Lakh*</span><span class="lk"><svg class="lk-ic" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2zm-7-2a2 2 0 0 1 4 0v2h-4V7zm3 9.7V18h-2v-1.3a2 2 0 1 1 2 0z"/></svg></span></button></td></tr>
+<tr><th scope="row">966</th><td>3 BHK</td><td class="tot"><button type="button" class="price-lock" data-open-modal data-plan="3 BHK" aria-label="Price locked. Enquire to unlock the 3 BHK price"><span class="amt">&#8377;79.06 Lakh*</span><span class="lk"><svg class="lk-ic" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2zm-7-2a2 2 0 0 1 4 0v2h-4V7zm3 9.7V18h-2v-1.3a2 2 0 1 1 2 0z"/></svg></span></button></td></tr>
+<tr><th scope="row">1008</th><td>3 BHK</td><td class="tot"><button type="button" class="price-lock" data-open-modal data-plan="3 BHK" aria-label="Price locked. Enquire to unlock the 3 BHK price"><span class="amt">&#8377;82.49 Lakh*</span><span class="lk"><svg class="lk-ic" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2zm-7-2a2 2 0 0 1 4 0v2h-4V7zm3 9.7V18h-2v-1.3a2 2 0 1 1 2 0z"/></svg></span></button></td></tr>
 
               </tbody>
             </table>

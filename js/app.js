@@ -10,6 +10,22 @@ document.addEventListener('DOMContentLoaded', function () {
       if (p[1]) document.querySelectorAll('[name="' + p[0] + '"]').forEach(function (el) { el.defaultValue = el.value = p[1]; });
     });
 
+
+  /* Prices are blurred until the visitor sends an enquiry. Once an
+     enquiry is saved (or was saved earlier on this browser) they unlock. */
+  var UNLOCK_KEY = 'raahee_prices_unlocked';
+  function unlockPrices() {
+    document.documentElement.classList.add('prices-unlocked');
+    document.querySelectorAll('.price-lock').forEach(function (el) {
+      el.removeAttribute('data-open-modal'); el.setAttribute('aria-label', el.querySelector('.amt').textContent);
+    });
+  }
+  try { if (window.localStorage && localStorage.getItem(UNLOCK_KEY) === '1') unlockPrices(); } catch (e) {}
+  document.addEventListener('enquirySubmitted', function () {
+    try { localStorage.setItem(UNLOCK_KEY, '1'); } catch (e) {}
+    unlockPrices();
+  });
+
   /* Mobile nav */
   var toggle = document.getElementById('navToggle'), nav = document.getElementById('mainNav');
   if (toggle && nav) {
