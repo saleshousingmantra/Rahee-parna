@@ -179,6 +179,10 @@
     form input:not([type=hidden]), form select { width: 100%; font: 400 .95rem var(--sans); padding: .72em .9em; border: 1px solid #cfc8b9; border-radius: 8px; background: #fff; color: var(--ink); }
     form input:focus, form select:focus { outline: 2px solid var(--teal); outline-offset: 1px; }
     form input[readonly] { background: #f3f1ea; color: var(--muted); }
+    .form-locked { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: .4em; }
+    .form-locked-field { margin: 0 !important; }
+    .form-locked-field span { display: block; font-size: .66rem; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); margin-bottom: .2rem; }
+    form .form-locked-field input { background: #f3f1ea; color: var(--ink); font-weight: 600; cursor: default; pointer-events: none; padding: .55em .8em; font-size: .88rem; }
     form .opt, .fine { color: var(--muted); font-weight: 400; }
     .fine { font-size: .75rem; margin: .8em 0 0; }
     .field-error { color: #b3261e; font-size: .78rem; display: none; margin-top: .25em; }
@@ -477,7 +481,10 @@
         </div>
         <div class="form-wrap">
           <form id="footerForm" novalidate>
-            <input type="hidden" name="project" value="Raahee Parna">
+            <div class="form-locked">
+              <label class="form-locked-field"><span>Project</span><input name="project" value="Raahee Parna" readonly tabindex="-1"></label>
+              <label class="form-locked-field"><span>Relationship Manager</span><input name="manager_name" value="Nikhil Kamble" readonly tabindex="-1"></label>
+            </div>
             <label for="f-name">Full name</label>
             <input type="text" id="f-name" name="name" autocomplete="name" placeholder="Your full name" required>
             <span class="field-error" id="f-name-error" role="alert"></span>
@@ -496,7 +503,6 @@
             </select>
             <span class="field-error" id="f-interest-error" role="alert"></span>
             <input type="hidden" name="developer" value="Raahee Corp">
-            <input type="hidden" name="manager_name" value="">
             <input type="hidden" name="manager_email" value="">
             <input type="hidden" name="source" value="">
             <input type="hidden" name="source_link" value="">
@@ -531,8 +537,11 @@
       <h3 id="modalTitle">Get Price &amp; Brochure</h3>
       <p class="modal-sub">Share your details and our team will call you with pricing, floor plans and the brochure.</p>
       <form id="modalForm" novalidate>
-        <input type="hidden" name="project" value="Raahee Parna">
-        <label for="modal-name">Full name</label>
+        <div class="form-locked">
+              <label class="form-locked-field"><span>Project</span><input name="project" value="Raahee Parna" readonly tabindex="-1"></label>
+              <label class="form-locked-field"><span>Relationship Manager</span><input name="manager_name" value="Nikhil Kamble" readonly tabindex="-1"></label>
+            </div>
+            <label for="modal-name">Full name</label>
         <input type="text" id="modal-name" name="name" autocomplete="name" placeholder="Your full name" required>
             <span class="field-error" id="modal-name-error" role="alert"></span>
         <label for="modal-phone">Mobile number</label>
@@ -550,7 +559,6 @@
         </select>
             <span class="field-error" id="modal-interest-error" role="alert"></span>
         <input type="hidden" name="developer" value="Raahee Corp">
-        <input type="hidden" name="manager_name" value="">
         <input type="hidden" name="manager_email" value="">
             <input type="hidden" name="source" value="">
             <input type="hidden" name="source_link" value="">
